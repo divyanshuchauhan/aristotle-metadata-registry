@@ -2,7 +2,7 @@ import datetime
 from django.apps import apps
 from django.contrib.auth.decorators import login_required
 from braces.views import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.core.cache import cache
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
@@ -10,6 +10,7 @@ from django.db.models import Q, Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from django.views.generic import (DetailView,
                                   ListView,
                                   UpdateView,
@@ -18,6 +19,8 @@ from django.views.generic import (DetailView,
                                   View)
 
 from django.core.exceptions import ValidationError
+from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 
 from aristotle_mdr import forms as MDRForms
 from aristotle_mdr import models as MDR
@@ -46,6 +49,14 @@ class FriendlyLoginView(LoginView):
             context.update({'welcome': True})
 
         return context
+
+
+class FriendlyLogoutView(LogoutView):
+
+    @method_decorator(never_cache)
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _('You have been logged out'))
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):

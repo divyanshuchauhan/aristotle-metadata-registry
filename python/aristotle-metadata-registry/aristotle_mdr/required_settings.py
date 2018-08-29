@@ -142,7 +142,7 @@ SESSION_ENGINE = 'user_sessions.backends.db'
 
 ROOT_URLCONF = 'aristotle_mdr.urls'
 LOGIN_REDIRECT_URL = '/account/home'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/home'
 LOGIN_URL = '/login'
 LOGOUT_URL = '/logout'
 

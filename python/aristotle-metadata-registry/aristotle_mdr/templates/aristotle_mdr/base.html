@@ -39,7 +39,7 @@
         <div class="row">
         <div class="alert alert-info" role="alert">
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <ul class="messages">
+            <ul class="messages text-center">
                 {% for message in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                 {% endfor %}

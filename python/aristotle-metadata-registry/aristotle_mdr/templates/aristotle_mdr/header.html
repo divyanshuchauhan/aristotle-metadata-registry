@@ -165,7 +165,7 @@
                 {% url 'aristotle_mdr:home' as home_url %}
                 {% url 'aristotle_mdr:userHome' as user_home_url %}
                 {% ifeq request.path user_home_url val=home_url default=request.path as redirect_url %}
-                <a id="header_menu_button_logout" href="{% url 'logout' %}?next={{redirect_url}}" title="{% trans 'Log out'%}">
+                <a id="header_menu_button_logout" href="{% url 'logout' %}" title="{% trans 'Log out'%}">
                     <i class="fa fa-sign-out fa-fw"></i>
                     <span class="visible-xs-inline">{% trans 'Log out' %}</span>
                 </a>
