@@ -39,4 +39,5 @@ urlpatterns = [
 
     url(r'^v2/', include('aristotle_mdr_api.v2.urls', namespace='aristotle_mdr_api.v2')),
     url(r'^v3/', include('aristotle_mdr_api.v3.urls', namespace='aristotle_mdr_api.v3')),
+    url(r'^v3.1/', include('aristotle_mdr_api.v3_1.urls', namespace='aristotle_mdr_api.v3_1')),
 ]
