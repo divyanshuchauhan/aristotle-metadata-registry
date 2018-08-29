@@ -416,7 +416,7 @@ def Deserializer(manifest, **options):
                     )
                     RelModel = rel.rel.related_model
                     other_side = rel.rel.remote_field.name
-                    rel.objects.all().delete()
+                    rel.all().delete()
                     for weak_entity in field_value:
                         # Boy this would be easier if uuids were primary keys :/
                         extra = {}
