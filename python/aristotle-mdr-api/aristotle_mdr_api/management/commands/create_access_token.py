@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand
 from django.test import override_settings
 
 from django.test import TestCase, Client, override_settings, tag
-from aristotle_mdr_api.token_auth.models import AristotleToken
+# from aristotle_mdr_api.token_auth.models import AristotleToken
 import json
 from django.urls import reverse
 import static_precompiler
@@ -47,7 +47,7 @@ class Command(BaseCommand):
         client.post(reverse('logout'), {})
         response = client.post(reverse('friendly_login'), {'username': 'admin@myproject.com', 'password': 'password'})
         postdata = {'name': 'div', 'perm_json': json.dumps(all_true_perms)}
-        response = client.post(reverse('token_auth:token_create'), postdata)
+        response = client.post('/api/token/create/', postdata)
         return response.context_data['key']
 
 
