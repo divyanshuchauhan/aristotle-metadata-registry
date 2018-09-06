@@ -45,7 +45,8 @@ class Command(BaseCommand):
             user=user,
             permissions=all_true_perms
         )
-        return token.key
+        print(token.key)
+        # return token.key
         
 
 
