@@ -114,6 +114,7 @@ def user_is_editor(user, workgroup=None):
 
 
 def user_can_submit_to_workgroup(user, workgroup):
+    return True
     submitter = workgroup in user.submitter_in.all()
     steward = workgroup in user.steward_in.all()
     return submitter or steward
